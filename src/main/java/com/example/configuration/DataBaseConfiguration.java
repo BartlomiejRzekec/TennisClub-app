@@ -31,7 +31,7 @@ public class DataBaseConfiguration {
 	{
 		LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
 		factoryBean.setDataSource(dataSource());
-		factoryBean.setPackagesToScan("com.example");
+		factoryBean.setPackagesToScan("com.example.entities");
 		factoryBean.setJpaProperties(getJpaProperties());
 		factoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
 		return factoryBean;
@@ -53,7 +53,7 @@ public class DataBaseConfiguration {
 	{
 		Properties properties = new Properties();
 		properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
-		properties.setProperty("hibernate.hbm2ddl.auto", "create");
+		properties.setProperty("hibernate.hbm2ddl.auto", "update");
 		return properties;
 	}
 	

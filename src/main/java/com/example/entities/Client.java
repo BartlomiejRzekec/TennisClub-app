@@ -1,19 +1,20 @@
 package com.example.entities;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Client {
@@ -22,10 +23,16 @@ public class Client {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
-	@Size(min = 1, max = 15)
 	private String firstName;
-	@Size(min = 1, max = 15)
 	private String lastName;
+	private String email;
+	private String password;
+	private int active;
+
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+	private Set<Role> roles;
+
 	@Column(name = "trainer_name")
 	private String trainerByLastName;
 
@@ -33,7 +40,6 @@ public class Client {
 	@Column(name = "date_of_registration")
 	private java.util.Date timeStamp;
 
-	
 	@ManyToOne
 	@JoinColumn(name = "trainer_id")
 	private Trainer trainer;
@@ -44,6 +50,22 @@ public class Client {
 				+ ", trainers=" + trainer.toString() + "]";
 	}
 
+	public Set<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
+	}
+
+	public int getActive() {
+		return active;
+	}
+
+	public void setActive(int active) {
+		this.active = active;
+	}
+
 	public String getTrainerByLastName() {
 		return trainerByLastName;
 	}
@@ -52,7 +74,22 @@ public class Client {
 		this.trainerByLastName = trainerByLastName;
 	}
 
-	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 	public Trainer getTrainers() {
 		return trainer;
 	}
