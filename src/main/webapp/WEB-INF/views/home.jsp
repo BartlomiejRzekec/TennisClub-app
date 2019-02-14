@@ -20,29 +20,31 @@
 	
 		<h1>Welcome to Tennis Club home page</h1>
 		
+
+	<sec:authorize access="! isAuthenticated()">
 		<tr>
 			<td>
-				<a href="<c:url value="/addTrainers" />">Click to auto-add trainers to Data Base</a>
+				<a href="<c:url value="/login" />"><s:message code="menu.login"/></a>
 			</td>
 		</tr> 
+	</sec:authorize>
+	
+	<sec:authorize access="isAuthenticated()">
 		<tr>
 			<td>
-				<a href="<c:url value="/register" />">Register</a>
+				<a href="<c:url value="/profile" />"><s:message code="menu.profil"/></a>
 			</td>
 		</tr> 
+	</sec:authorize>
+		
 		<tr>
 			<td>
-				<a href="<c:url value="findClient" />">Find Client</a>
+				<a href="<c:url value="/register" />"><s:message code="menu.register"/></a>
 			</td>
-		</tr> 
+		</tr> 		
 		<tr>
 			<td>
-				<a href="<c:url value="/showAllClients" />">Show list of Clients</a>
-			</td>
-		</tr> 
-		<tr>
-			<td>
-				<a href="<c:url value="/showAllTrainers" />">Show list of Trainers</a>
+				<a href="<c:url value="/showAllTrainers" />"><s:message code="menu.trainers"/></a>
 			</td>
 		</tr> 
 	

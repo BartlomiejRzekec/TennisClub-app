@@ -14,6 +14,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -27,7 +28,7 @@ public class Client {
 	private String lastName;
 	private String email;
 	private String password;
-	private int active;
+	private int enabled;
 
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "client_role", joinColumns = @JoinColumn(name = "client_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
@@ -50,20 +51,35 @@ public class Client {
 				+ ", trainers=" + trainer.toString() + "]";
 	}
 
+	@Transient
+	private long roleNumber;
+
+	
+	
+	
+	
+	public int getEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(int enabled) {
+		this.enabled = enabled;
+	}
+
+	public long getRoleNumber() {
+		return roleNumber;
+	}
+
+	public void setRoleNumber(long roleNumber) {
+		this.roleNumber = roleNumber;
+	}
+
 	public Set<Role> getRoles() {
 		return roles;
 	}
 
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
-	}
-
-	public int getActive() {
-		return active;
-	}
-
-	public void setActive(int active) {
-		this.active = active;
 	}
 
 	public String getTrainerByLastName() {
@@ -102,6 +118,10 @@ public class Client {
 		return id;
 	}
 
+	public void setId(long id) {
+		this.id = id;
+	}
+
 	public String getFirstName() {
 		return firstName;
 	}
@@ -110,20 +130,16 @@ public class Client {
 		return lastName;
 	}
 
-	public java.util.Date getTimeStamp() {
-		return timeStamp;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+
+	public java.util.Date getTimeStamp() {
+		return timeStamp;
 	}
 
 	public void setTimeStamp(java.util.Date timeStamp) {

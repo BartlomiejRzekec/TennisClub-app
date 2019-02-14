@@ -7,7 +7,7 @@ import javax.persistence.Id;
 
 @Entity
 public class Role {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
@@ -21,4 +21,13 @@ public class Role {
 	public void setRole(String role) {
 		this.role = role;
 	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
 }

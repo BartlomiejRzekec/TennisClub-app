@@ -5,6 +5,9 @@ import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,7 +18,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.entities.Client;
-import com.example.entities.Trainer;
 import com.example.repositories.ClientService;
 import com.example.repositories.ClientsRepository;
 import com.example.repositories.RoleRepository;
@@ -74,7 +76,6 @@ public class ClientController {
 		else {
 			
 			
-			
 			clientService.saveClient(client);
 			
 			model.addAttribute("message", messageSource.getMessage("user.register.success.email", null, locale));
@@ -87,22 +88,36 @@ public class ClientController {
 	}
 	
 	@GetMapping("/client/{firstName}/{lastName}")
-	public String showClientsProfile(@PathVariable String firstName,
+	public String showLogingMessage(@PathVariable String firstName,
 									 @PathVariable String lastName,
 									 Model model) {
 		Client client = clientsRepository.findByFirstNameAndLastName(firstName, lastName);
 		model.addAttribute(client);
+		return "logingMessage";
+	}
+	
+
+	@GetMapping("/profile")
+	public String showClientProfile(Model model) {
+		
+		String email = null; 
+				
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		if(!(auth instanceof AnonymousAuthenticationToken)) {
+			email = auth.getName();
+		}				
+		
+		Client client = clientService.findClientByEmail(email);
+		
+		long roleNumber = client.getRoles().stream()
+												.findFirst()
+												.get()
+												.getId();
+		
+		client.setRoleNumber(roleNumber);
+		model.addAttribute("client", client);
+		
 		return "profile";
-	}
-	
-	@GetMapping("/findClient")
-	public String showFindingForm(Client client) {
-		return "findForm";
-	}
-	
-	@PostMapping("/findClient")
-	public @ResponseBody Client processFinding(Client client) {
-		Client clientToFind = clientsRepository.findByFirstNameAndLastName(client.getFirstName(), client.getLastName());
-		return clientToFind;
+		
 	}
 }

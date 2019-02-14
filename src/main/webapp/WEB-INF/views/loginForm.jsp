@@ -19,7 +19,7 @@
 	
 		<form action="/login" method="POST">
 			
-			<table width="350" border="0" cellpadding="4" cellspacing="1"
+			<table width="600" border="0" cellpadding="4" cellspacing="1"
 			align="center">
 			
 				<tr>
@@ -64,10 +64,18 @@
 				<tr>
 					<td colspan="2" align="center" bgcolor="#ffffff"><input
 						type="submit" value="Log in"/></td>
+						
+					<td align="left">
+						<input id="remember_me" name="remember-me" type="checkbox"/>
+						<label for="remember_me" class="inline"><s:message code="checkbox.rememberMe"></s:message></label>
+					</td>	
 				</tr>
 			
+		
 			
 			</table>
+			
+			
 		
 		
 		</form>

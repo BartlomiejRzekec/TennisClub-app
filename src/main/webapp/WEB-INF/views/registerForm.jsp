@@ -32,7 +32,7 @@
 			
 
 			<tr>
-				<td width="130" align="right" ><s:message code="register.name"/></td>
+				<td width="130" align="right" ><s:message code="register.firstName"/></td>
 				<td width="270" align="left"><sf:input path="firstName"
 						size="28"/></td>
 			</tr>

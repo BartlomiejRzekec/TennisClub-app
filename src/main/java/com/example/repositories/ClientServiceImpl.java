@@ -38,14 +38,15 @@ public class ClientServiceImpl implements ClientService{
 		
 		
 		client.setPassword(bCryptPasswordEncoder.encode(client.getPassword()));
-		client.setActive(1);
 		
-		Role role = roleRepository.findByRole("ROLE_USER");
+		
+		Role role = roleRepository.findByRole("ROLE_ADMIN");
 		client.setRoles(new HashSet<Role>(Arrays.asList(role)));
 		
 		Trainer trainerByLastName = trainersRepository.findByLastName(client.getTrainerByLastName());
 		client.setTrainers(trainerByLastName);
 		client.setTimeStamp(new Date());
+		client.setEnabled(1);
 		clientsRepository.save(client);
 		
 		return null;
@@ -59,6 +60,7 @@ public class ClientServiceImpl implements ClientService{
 		return client;
 	}
 
+	
 	
 	
 	
