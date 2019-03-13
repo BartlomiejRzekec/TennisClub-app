@@ -18,9 +18,7 @@
 
 <h2><s:message code="menu.register"/></h2>
 
-<p align="center">
-		<c:out value="${message }" />
-</p>
+
 
 
 	<sf:form id="usersForm" modelAttribute="client"

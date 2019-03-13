@@ -28,26 +28,7 @@ public class WebConfig {
 	}
 	
 	
-//	@Bean
-//	public ViewResolver viewResolver(SpringTemplateEngine templateEngine) {
-//	ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
-//	viewResolver.setTemplateEngine(templateEngine);
-//	return viewResolver;
-//	}	
-//	@Bean
-//	public TemplateEngine templateEngine(SpringResourceTemplateResolver templateResolver) {
-//	SpringTemplateEngine templateEngine = new SpringTemplateEngine();
-//	templateEngine.setTemplateResolver(templateResolver);
-//	return templateEngine;
-//	}
-//	@Bean
-//	public SpringResourceTemplateResolver templateResolver() {
-//	SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
-//	templateResolver.setPrefix("/WEB-INF/templates/");
-//	templateResolver.setSuffix(".html");
-//	templateResolver.setTemplateMode("HTML5");
-//	return templateResolver;
-//	}
+
 	
 	
 }

@@ -40,7 +40,7 @@ public class ClientServiceImpl implements ClientService{
 		client.setPassword(bCryptPasswordEncoder.encode(client.getPassword()));
 		
 		
-		Role role = roleRepository.findByRole("ROLE_ADMIN");
+		Role role = roleRepository.findByRole("ROLE_USER");
 		client.setRoles(new HashSet<Role>(Arrays.asList(role)));
 		
 		Trainer trainerByLastName = trainersRepository.findByLastName(client.getTrainerByLastName());
@@ -57,6 +57,12 @@ public class ClientServiceImpl implements ClientService{
 		
 		Client client = clientsRepository.findByEmail(email);
 		
+		return client;
+	}
+
+	@Override
+	public Client findByFirstNameAndLastName(String firstName, String lastName) {
+		Client client = clientsRepository.findByFirstNameAndLastName(firstName, lastName);
 		return client;
 	}
 

@@ -11,6 +11,6 @@ public interface ClientService {
 	
 	public Client saveClient(Client client);
 	public Client findClientByEmail(String email);
-	
+	public Client findByFirstNameAndLastName(String firstName, String lastName);
 
 }

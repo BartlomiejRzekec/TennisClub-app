@@ -24,6 +24,10 @@
 		</tr> 
 		<tr>
 			<td>
+				<a href="<c:url value="/findClient" />"><s:message code="menu.findClient"/></a>
+			</td>
+		<tr>
+			<td>
 				<a href="<c:url value="/home" />"><s:message code="menu.backToHome"/></a>
 			</td>
 		</tr> 

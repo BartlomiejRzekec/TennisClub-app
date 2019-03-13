@@ -11,12 +11,7 @@ import com.example.repositories.TrainersRepository;
 @Controller
 public class HomeController {
 
-	private TrainersRepository trainersRepository;
-
-	@Autowired
-	public HomeController(TrainersRepository trainersRepository) {
-		this.trainersRepository = trainersRepository;
-	}
+	
 
 	@GetMapping({"/home", "/"})
 	public String homePage() {

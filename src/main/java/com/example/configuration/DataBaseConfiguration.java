@@ -41,9 +41,9 @@ public class DataBaseConfiguration {
 	public DataSource dataSource()
 	{
 		MysqlDataSource dataSource = new MysqlDataSource();
-		dataSource.setUrl("jdbc:mysql://127.0.0.1:3306/tennisclub?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
+		dataSource.setUrl("jdbc:mysql://127.0.0.1:3306/tennisclub?autoReconnect=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
 		dataSource.setUser("root");
-		dataSource.setPassword("");
+		dataSource.setPassword("root");
 		dataSource.setServerName("127.0.0.1");
 		return dataSource;
 	}

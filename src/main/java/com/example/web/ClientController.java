@@ -52,7 +52,19 @@ public class ClientController {
 	public @ResponseBody List<Client> findAllClients() {
 		return clientsRepository.findAll();
 	}
-
+	
+	@GetMapping("/findClient")
+	public String showFindClientForm(Client client) {
+		return "findForm";
+	}
+	
+	@PostMapping("/findClient")
+	public @ResponseBody Client findClient(Client client) {
+		
+		Client clientToFind = clientService.findByFirstNameAndLastName(client.getFirstName(), client.getLastName());
+		
+		return clientToFind;
+	}
 		
 	
 	@GetMapping("/register")
@@ -61,7 +73,7 @@ public class ClientController {
 	}
 	
 	@PostMapping("/register")
-	public String processRegistration( Client client, BindingResult result, Model model, Locale locale) {
+	public String processRegistration(Client client, BindingResult result, Model model, Locale locale) {
 		
 		
 		Client clientExists = clientService.findClientByEmail(client.getEmail());
@@ -77,9 +89,7 @@ public class ClientController {
 			
 			
 			clientService.saveClient(client);
-			
-			model.addAttribute("message", messageSource.getMessage("user.register.success.email", null, locale));
-			//model.addAttribute("user", new User());
+
 			return "redirect:/client/" + client.getFirstName() + "/" + client.getLastName();
 		}	
 		
@@ -91,7 +101,7 @@ public class ClientController {
 	public String showLogingMessage(@PathVariable String firstName,
 									 @PathVariable String lastName,
 									 Model model) {
-		Client client = clientsRepository.findByFirstNameAndLastName(firstName, lastName);
+		Client client = clientService.findByFirstNameAndLastName(firstName, lastName);
 		model.addAttribute(client);
 		return "logingMessage";
 	}
