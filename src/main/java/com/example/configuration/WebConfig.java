@@ -4,9 +4,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.thymeleaf.extras.springsecurity5.dialect.SpringSecurityDialect;
 
 
 @Configuration
@@ -15,12 +14,10 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 public class WebConfig {
 
 	@Bean
-	public ViewResolver viewResolver() {
-		InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-		resolver.setPrefix("/WEB-INF/views/");
-		resolver.setSuffix(".jsp");
-		return resolver;
+	public SpringSecurityDialect springSecurityDialect() {
+		return new SpringSecurityDialect();
 	}
+
 	
 	@Bean
 	public BCryptPasswordEncoder bcp() {

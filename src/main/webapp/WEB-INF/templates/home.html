@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head >
+<meta charset="UTF-8">
+<title th:text="#{menu.mainPage}"></title>
+</head>
+<body>
+
+	<div th:include="fragments/header::header"></div>
+
+	<h1>Welcome to Tennis Club service</h1>
+
+
+	<table width="500" border="0" cellpadding="4" cellspacing="1"
+			align="left">
+
+		<tr sec:authorize="!isAuthenticated()">
+			<td>
+				<a th:href="@{/login}" th:text="#{menu.login}"></a>
+			</td>
+		</tr> 
+
+	
+
+		<tr sec:authorize="isAuthenticated()">
+			<td>
+				<a th:href="@{/profile}" th:text="#{menu.profile}"></a>
+			</td>
+		</tr> 
+
+		
+		<tr>
+			<td>
+				<a th:href="@{/register}" th:text="#{menu.register}"></a>
+			</td>
+		</tr> 		
+		<tr>
+			<td>
+				<a th:href="@{/showAllTrainers}" th:text="#{menu.trainers}"></a>
+			</td>
+		</tr> 
+		
+		</table>
+
+</body>
+</html>

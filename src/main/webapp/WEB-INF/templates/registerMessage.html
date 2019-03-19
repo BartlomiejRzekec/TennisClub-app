@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{menu.register}"></title>
+</head>
+<body>
+
+	<div th:include="fragments/header::header"></div>
+	
+	<h2 th:text="#{user.register.success}"></h2><br>
+	<a th:text="${client.firstName}"></a>
+	<a th:text="${client.lastName}"></a><br>
+	<a th:href="@{/home}" th:text="#{menu.backToHome}"></a>
+
+
+</body>
+</html>

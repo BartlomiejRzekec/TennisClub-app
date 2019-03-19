@@ -13,7 +13,7 @@
 </head>
 <body>
 
-	<%@include file="/WEB-INF/incl/menu.app" %>
+
 	
 	<h2><s:message code="loging.pageName"/></h2>
 	
@@ -74,9 +74,6 @@
 		
 			
 			</table>
-			
-			
-		
 		
 		</form>
 

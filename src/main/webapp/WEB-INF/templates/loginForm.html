@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{menu.login}"></title>
+</head>
+<body>
+
+	<div th:include="fragments/header::header"></div>
+
+	<h2 th:text="#{menu.login}"></h2>
+	
+		<form th:action="@{/login}" method="POST">
+			
+			<table width="600" border="0" cellpadding="4" cellspacing="1"
+			align="center">			
+			
+				<tr>
+					
+					<td colspan="2" align="center" th:if="${param.error}">
+							<font color="red" th:text="#{error.login}"></font>
+					</td>
+				
+				</tr>
+			
+				<tr>
+				
+					<td align="right" width="140" th:text="#{register.email}"></td>
+					
+					<td align="left">
+					<input type="text" name="email" id="email" size="30" />
+					
+					</td>
+				
+				</tr>
+				
+					<tr>
+					
+					<td align="right" width="140" th:text="#{register.password}"></td>
+					
+					<td align="left">
+						<input type="password" name="password" id="password" size="30" />
+						
+					</td>
+				
+				</tr>
+				
+				<tr>
+					<td colspan="2" align="center" bgcolor="#ffffff"><input
+						type="submit" value="Log in"/></td>
+						
+					<td align="left">
+						<input id="remember_me" name="remember-me" type="checkbox"/>
+						<label for="remember_me" class="inline" th:text="#{checkbox.rememberMe}"></label>
+					</td>	
+				</tr>
+			
+		
+			
+			</table>
+		
+		</form>
+
+</body>
+</html>

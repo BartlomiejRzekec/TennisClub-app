@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{menu.profile}"></title>
+</head>
+<body>
+
+	<div th:include="fragments/header::header"></div>
+	
+	<h2 th:text="#{menu.profile}"></h2>
+
+
+		<table>
+		
+			<tr>			
+				<td width="140" align="left" th:text="#{register.firstName}"></td>
+				<td width="140" align="right" th:text="${client.firstName}"></td>				
+			</tr>
+			<tr>			
+				<td width="140" align="left" th:text="#{register.lastName}"></td>
+				<td width="140" align="right" th:text="${client.lastName}"></td>					
+			</tr>
+			<tr>			
+				<td width="140" align="left" th:text="#{register.email}"></td>
+				<td width="140" align="right" th:text="${client.email}"></td>					
+			</tr>
+			<tr>			
+				<td width="140" align="left" th:text="#{profil.role}"></td>
+				<td width="140" align="right" th:switch="${client.roleNumber}">
+					<p th:case="'1'" th:text="#{word.admin}"/>
+					<p th:case="*" th:text="#{word.user}"/>
+				</td>				
+			</tr>
+			<tr>
+				<td>
+					<a th:href="@{/home}" th:text="#{menu.backToHome}"></a>
+				</td>
+			</tr> 
+		
+		</table>	
+
+</body>
+</html>

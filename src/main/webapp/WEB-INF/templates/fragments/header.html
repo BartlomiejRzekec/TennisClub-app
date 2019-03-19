@@ -1,0 +1,22 @@
+<header th:fragment="header">
+
+<table width="100%" border="0" cellpadding="8" cellspacing="4" class="tableMenuBg" bgcolor="#e6f2ff">
+	<tr>
+		<td align="left" width="900">
+			<a th:href="@{/home}" th:text="#{menu.mainPage}"></a>&nbsp;&nbsp;
+			<a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin}" th:text="#{menu.adminPage}"></a>
+		</td>
+		<td align="right" sec:authorize="! isAuthenticated()">
+			<a th:href="@{/login}" th:text="#{menu.login}"></a>&nbsp;&nbsp;
+			<a th:href="@{/register}" th:text="#{menu.register}"></a>&nbsp;&nbsp;
+		</td>
+		<td align="right" width="900" sec:authorize="isAuthenticated()">
+			<strong> Username: <span sec:authentication="name"></span> </strong>&nbsp;&nbsp;
+			<a th:href="@{/profile}" th:text="#{menu.profile}"></a>&nbsp;&nbsp;
+			<a th:href="@{/logout}" th:text="#{menu.logout}"></a>&nbsp;&nbsp;
+		</td>	
+	</tr>
+</table>
+
+
+</header>

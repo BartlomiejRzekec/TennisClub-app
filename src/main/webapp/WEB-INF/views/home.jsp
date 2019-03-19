@@ -1,4 +1,4 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="s"  uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
@@ -13,12 +13,14 @@
 </head>
 <body>
 
-<%@include file="/WEB-INF/incl/menu.app" %>
+
+
+<h1>Welcome to Tennis Club home page</h1>
 
 	<table width="500" border="0" cellpadding="4" cellspacing="1"
 			align="left">
 	
-		<h1>Welcome to Tennis Club home page</h1>
+		
 		
 
 	<sec:authorize access="! isAuthenticated()">
@@ -32,7 +34,7 @@
 	<sec:authorize access="isAuthenticated()">
 		<tr>
 			<td>
-				<a href="<c:url value="/profile" />"><s:message code="menu.profil"/></a>
+				<a href="<c:url value="/profile" />"><s:message code="menu.profile"/></a>
 			</td>
 		</tr> 
 	</sec:authorize>
@@ -51,7 +53,7 @@
 	
 	
 	
-	</table>>
+	</table>
 	
 </body>
 </html>

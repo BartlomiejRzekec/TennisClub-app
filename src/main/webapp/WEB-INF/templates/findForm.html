@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{menu.findClient}"></title>
+</head>
+<body>
+
+	<div th:include="fragments/header::header"></div>
+
+	<h3 th:text="#{menu.findClient}"></h3>
+	
+	<form th:action="@{/findClient}" method="POST" th:object="${client}">
+
+		<table width="400" align="left">
+		
+				<tr>
+					<td width="70" align="right" th:text="#{register.firstName}"></td>
+					<td width="270" align="left"><input type="text" th:field="*{firstName}"></td>				
+				</tr>
+				 
+				   
+				<tr>
+					<td width="70" align="right" th:text="#{register.lastName}"></td>
+					<td width="270" align="left"><input type="text" th:field="*{lastName}"></td>			
+				</tr>
+				 
+				   
+				<tr>
+					<td> <input type="submit" value="Find" /></td>				
+				</tr>
+		
+		
+		</table>		
+			
+	</form>
+
+</body>
+</html>

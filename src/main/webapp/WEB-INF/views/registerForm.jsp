@@ -14,7 +14,7 @@
 </head>
 <body>
 
-<%@include file="/WEB-INF/incl/menu.app" %>
+
 
 <h2><s:message code="menu.register"/></h2>
 

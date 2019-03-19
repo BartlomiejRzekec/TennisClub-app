@@ -59,7 +59,7 @@ public class ClientController {
 	}
 	
 	@PostMapping("/findClient")
-	public @ResponseBody Client findClient(Client client) {
+	public @ResponseBody Client findClient(Client client, BindingResult result) {
 		
 		Client clientToFind = clientService.findByFirstNameAndLastName(client.getFirstName(), client.getLastName());
 		
@@ -73,7 +73,7 @@ public class ClientController {
 	}
 	
 	@PostMapping("/register")
-	public String processRegistration(Client client, BindingResult result, Model model, Locale locale) {
+	public String processRegistration(Client client, BindingResult result) {
 		
 		
 		Client clientExists = clientService.findClientByEmail(client.getEmail());
@@ -103,7 +103,7 @@ public class ClientController {
 									 Model model) {
 		Client client = clientService.findByFirstNameAndLastName(firstName, lastName);
 		model.addAttribute(client);
-		return "logingMessage";
+		return "registerMessage";
 	}
 	
 
