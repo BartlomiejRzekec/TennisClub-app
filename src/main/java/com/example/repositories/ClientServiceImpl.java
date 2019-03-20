@@ -3,6 +3,7 @@ package com.example.repositories;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -64,6 +65,11 @@ public class ClientServiceImpl implements ClientService{
 	public Client findByFirstNameAndLastName(String firstName, String lastName) {
 		Client client = clientsRepository.findByFirstNameAndLastName(firstName, lastName);
 		return client;
+	}
+
+	@Override
+	public List<Client> findAllClients() {
+		return clientsRepository.findAll();
 	}
 
 	
